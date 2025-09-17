@@ -1,0 +1,6 @@
+﻿  Spherical-Harmonics.cpp
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(15,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(36,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(37,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(44,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Spherical-Harmonics.vcxproj -> C:\Users\carpe\Documents\git\Spherical-Harmonics\x64\Debug\Spherical-Harmonics.exe
