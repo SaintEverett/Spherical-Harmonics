@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <complex>
+#include <vector>
 
 #define pi 3.14159265358979323846264
 
@@ -38,6 +39,22 @@ float SHEM(unsigned order, int degree, float azimuth, float zenith) // IEM ambix
     return (n*p*r);
 }
 
+std::vector<float> SH(unsigned order, const float azimuth, const float zenith)
+{
+    std::vector<float> result = std::vector<float>((int)pow((order+1),2), 0); // instantiate and reserve a vector that is the size of the results that shall be returned
+    result[0] = 1.f;
+    for (int i = -(int)order; i < (int)order; i++)
+    {
+        float n = norme(order, i);
+        float p = (std::assoc_legendref(order, abs(i), cosf(zenith)));
+        float r = 0.f;
+        if (i < 0) r = sinf(abs(i) * azimuth);
+        else if (i >= 0) r = cosf(i * azimuth);
+        result[(i + order) + 1] = (n * p * r); // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
+    }
+    return result;
+}
+
 std::complex<float> SH(unsigned order, int degree, float azimuth, float zenith) // 
 {
     std::complex<float> iz(0.f, 1.f);
@@ -69,8 +86,8 @@ std::complex<float> SH(unsigned order, int degree, float azimuth, float zenith) 
 int main()
 {
     std::complex<float> iz(0.f, 1.f);
-    float az = 45.f;
-    float ze = 15.f;
+    float az = 0.f;
+    float ze = 90.f;
     unsigned ord = 1;
     int deg = 1;
     float norm = (1.f / sqrtf(2.f));

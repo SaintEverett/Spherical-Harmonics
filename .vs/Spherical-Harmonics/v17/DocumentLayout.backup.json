@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\",
+  "WorkspaceRootPath": "C:\\Users\\carpe\\Documents\\GitHub\\Spherical-Harmonics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\GitHub\\Spherical-Harmonics\\Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|solutionrelative:Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
@@ -17,12 +17,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -39,11 +35,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Spherical-Harmonics.cpp",
-              "DocumentMoniker": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
+              "DocumentMoniker": "C:\\Users\\carpe\\Documents\\GitHub\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
               "RelativeDocumentMoniker": "Spherical-Harmonics.cpp",
-              "ToolTip": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
+              "ToolTip": "C:\\Users\\carpe\\Documents\\GitHub\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
               "RelativeToolTip": "Spherical-Harmonics.cpp",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAEkAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-06T16:43:09.784Z",
               "EditorCaption": ""
