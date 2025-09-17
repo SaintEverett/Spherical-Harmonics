@@ -74,7 +74,11 @@ int main()
     unsigned ord = 1;
     int deg = 1;
     float norm = (1.f / sqrtf(2.f));
-    std::cout <<  SH(ord, deg, az, ze) << "   " << SHEM(ord, deg, az, ze) << std::endl;
+    for (int i = 0; i < 8; i++)
+    {
+
+    }
+    // std::cout <<  SH(ord, deg, az, ze) << "   " << SHEM(ord, deg, az, ze) << std::endl;
     // std::cout << norm * (SH(ord, -1 * deg, az, ze) + (-1.f * SH(ord, deg, az, ze))) << "   " << SHEM(ord, deg, az, ze) << std::endl;
     return 0;
 }
