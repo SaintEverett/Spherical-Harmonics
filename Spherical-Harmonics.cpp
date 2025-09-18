@@ -1,6 +1,4 @@
-// Spherical-Harmonics.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+// Online C++ compiler to run C++ program online
 #include <iostream>
 #include <cmath>
 #include <complex>
@@ -8,105 +6,89 @@
 
 #define pi 3.14159265358979323846264
 
-float norme(unsigned order, int degree) // IEM ambix normalization
+float rad2degree(float radians)
 {
-    int delta;
-    if (degree == 0) delta = 1;
-    else delta = 0;
-    float l_frac = ((2.f - (float)delta) / (4.f * pi));
-    float t_r = 1;
-    for (float i = 0; i < (order - abs(degree)); i++)
-    {
-        if ((order - abs(degree))) { t_r = 1; break; }
-        i *= t_r;
-    }
-    float b_r = 1;
-    for (float i = 0; i < (order + abs(degree)); i++)
-    {
-        if ((order + abs(degree))) { b_r = 1; break; }
-        i *= b_r;
-    }
+    return (radians * 180.f / pi);
+}
+
+float degree2rad(float degrees)
+{
+    return (degrees * pi / 180.f);
+}
+
+constexpr int factorial(int n)
+{
+    return n <= 1 ? 1 : (n * factorial(n - 1));
+}
+
+float norme(unsigned order, int degree)
+{
+    float l_frac = ((2.f * order + 1) / (4.f * pi));
+    float t_r = factorial(order - abs(degree));
+    float b_r = factorial(order + abs(degree));
     return sqrtf(l_frac * (t_r / b_r));
 }
 
-float SHEM(unsigned order, int degree, float azimuth, float zenith) // IEM ambix spherical harmonic
+float inversenorme(unsigned order, int degree)
 {
-    float n = norme(order, abs(degree));
-    float p = (std::assoc_legendre(order, abs(degree), cosf(zenith)));
-    float r = 1.f;
-    if (degree >= 0) r = cosf(fabs(degree) * azimuth);
-    else if (degree < 0) r = sinf(fabs(degree) * azimuth);
-    return (n*p*r);
+    float t_r = factorial(order - abs(degree));
+    float b_r = factorial(order + abs(degree));
+    return sqrt(4*pi) * sqrtf(b_r / t_r);
 }
 
-std::vector<float> SH(unsigned order, const float azimuth, const float zenith)
+std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_)
 {
-    std::vector<float> result = std::vector<float>((int)pow((order+1),2), 0); // instantiate and reserve a vector that is the size of the results that shall be returned
-    result[0] = 1.f;
-    for (int i = -(int)order; i < (int)order; i++)
+    float azimuth = degree2rad(azimuth_);
+    float zenith = degree2rad(zenith_);
+    std::vector<float> result = std::vector<float>((int)pow((order_ + 1), 2), 0); // instantiate and reserve a vector that is the size of the results that shall be returned
+    for (int order = 0; order <= order_; order++)
     {
-        float n = norme(order, i);
-        float p = (std::assoc_legendref(order, abs(i), cosf(zenith)));
-        float r = 0.f;
-        if (i < 0) r = sinf(abs(i) * azimuth);
-        else if (i >= 0) r = cosf(i * azimuth);
-        result[(i + order) + 1] = (n * p * r); // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
+        if (order == 0) result[0] = norme(order, 0);
+        for (int i = -order; i <= order; i++)
+        {
+            float n = norme(order, i);
+            float p = (std::assoc_legendref(order, abs(i), cosf((pi / 2.f) - zenith))); // subtract 90 degrees to rotate
+            float r = 0.f;
+            if (i < 0) r = sinf(i * ((pi / 2.f) - azimuth)); // subtract 90 degrees to rotate
+            else if (i >= 0) r = cosf(i * ((pi / 2.f) - azimuth)); // subtract 90 degrees to rotate
+            std::cout << "Order: " << order << " Degree: " << i << " Complex component: " << r << " Legendre: " << p << " Normalization term: " << n << " ACN: " << (pow(order, 2) + order + i) << '\n';
+            result[pow(order, 2) + order + i] = (n * p * r); // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
+        }
     }
     return result;
 }
 
-std::complex<float> SH(unsigned order, int degree, float azimuth, float zenith) // 
+std::vector<float> BFormSH(std::vector<float> SH)
 {
-    std::complex<float> iz(0.f, 1.f);
-    float l_frac = (((2.f * order) + 1.f) / (4.f * pi));
-    float r_n = 1;
-    if (order - degree == 0 || order - degree == 1) r_n = 1;
-    else
+    std::vector<float> result = std::vector<float>(SH.capacity(), 0);
+    unsigned order = 0;
+    int degree;
+    for (int ACN = 0; ACN < SH.capacity(); ACN++)
     {
-        for (float i = 1; i == (order - degree); i++)
-        {
-            i *= r_n;
-        }
+        order = floor(sqrtf(ACN));
+        degree = ACN - pow(order, 2) - order;
+        std::cout << "Order: " << order << " Degree: " << degree << " Encode factor: " << inversenorme(order, degree) << '\n';
+        result[ACN] = SH[ACN] * inversenorme(order, degree);
     }
-    float r_d = 1;
-    if (order + degree == 0 || order + degree == 1) r_d = 1;
-    else
-    {
-        for (float i = 1; i == (order + degree); i++)
-        {
-            i *= r_d;
-        }
-    }
-    float n = sqrtf(l_frac * (r_n / r_d));
-    float legen = (std::assoc_legendre(order, abs(degree), cosf(zenith)));
-    std::complex<float> end = std::exp(iz * (degree * azimuth));
-    return (n * legen) * end;
+    return result;
 }
 
-int main()
-{
-    std::complex<float> iz(0.f, 1.f);
-    float az = 0.f;
-    float ze = 90.f;
-    unsigned ord = 1;
-    int deg = 1;
-    float norm = (1.f / sqrtf(2.f));
-    for (int i = 0; i < 8; i++)
-    {
 
+int main() 
+{
+    float azi = 45.f;
+    float zeni = 26.f;
+    unsigned order = 4;
+    std::vector<float> spheric = SH(order, azi, zeni);
+    for (int i = 0; i < spheric.capacity(); i++)
+    {
+        std::cout << "Raw: " << spheric[i] << '\n';
     }
-    // std::cout <<  SH(ord, deg, az, ze) << "   " << SHEM(ord, deg, az, ze) << std::endl;
-    // std::cout << norm * (SH(ord, -1 * deg, az, ze) + (-1.f * SH(ord, deg, az, ze))) << "   " << SHEM(ord, deg, az, ze) << std::endl;
+    std::cout << std::endl;
+    std::vector<float> bformat = BFormSH(spheric);
+    for (int i = 0; i < bformat.capacity(); i++)
+    {
+        std::cout << "B-Format: " << bformat[i] << '\n';
+    }
     return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
