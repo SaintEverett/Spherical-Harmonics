@@ -5,9 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|solutionrelative:Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\PROGRAM FILES\\MICROSOFT VISUAL STUDIO\\2022\\COMMUNITY\\VC\\TOOLS\\MSVC\\14.44.35207\\INCLUDE\\CMATH||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,22 +28,10 @@
               "RelativeDocumentMoniker": "Spherical-Harmonics.cpp",
               "ToolTip": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
               "RelativeToolTip": "Spherical-Harmonics.cpp",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAswDUAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEYAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-09-17T23:14:21.196Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "cmath",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\cmath",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\cmath",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\cmath",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.44.35207\\include\\cmath",
-              "ViewState": "AgIAAFMEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-09-06T17:09:44.12Z"
             }
           ]
         }
