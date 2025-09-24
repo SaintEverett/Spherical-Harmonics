@@ -31,8 +31,15 @@ float norme(unsigned order, int degree)
     float t = factorial((int)order - abs(degree));
     float b = factorial((int)order + abs(degree));
     float res = (lf / fourpi) * (t / b);
-    // std::cout << "Order: " << order << " Degree: " << degree << " Norm: " << (sqrtf(res)) << std::endl;
+    //std::cout << '\n' << "\tLeft fraction: " << lf << " Top factorial: " << t << " Bottom factorial: " << b << " Result: " << (sqrtf(res)) << '\n';
     return (sqrtf(res));
+}
+
+float danielNorm(unsigned order, int degree)
+{
+    int d = (degree == 0) ? 1 : 0;  // Kronecker delta
+    float ratio = static_cast<float>(factorial(order - abs(degree))) / factorial(order + abs(degree));
+    return sqrtf((2.f - d) * ratio);
 }
 
 float norme(int order, int degree, bool n3d)
@@ -59,16 +66,16 @@ std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_
     std::vector<float> result = std::vector<float>(pow(((int)order_ + 1), 2), 0); // instantiate and reserve a vector that is the size of the results that shall be returned
     for (int order = 0; order <= (int)order_; order++)
     {
-        if (order == 0) result[0] = norme(order, 0, 0);
+        if (order == 0) result[0] = danielNorm(order, 0);
         for (int i = -order; i <= order; i++)
         {
-            float n = norme(order, i, 0);
-            float p = (std::assoc_legendref(order, abs(i), cosf(zenith))); 
+            float n = danielNorm(order, i);
+            float p = (std::assoc_legendref(abs(i), order, sinf(zenith)));
             float r = 0.f;
             if (i < 0) r = sinf(abs(i) * (azimuth)); 
             else if (i >= 0) r = cosf(i * (azimuth)); 
             // std::cout << "Order: " << order << " Degree: " << i << " Complex component: " << r << " Legendre: " << p << " Normalization term: " << n << " ACN: " << (pow(order, 2) + order + i) << '\n';
-            result[pow(order, 2) + order + i] = (n * p * r); // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
+            result[pow(order, 2) + order + i] = sqrtf((2 * order) + 1) * (n * p) * r; // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
         }
     }
 
@@ -97,20 +104,31 @@ std::vector<float> BFormSH(std::vector<float> SH)
 
 int main() 
 {
-    float azi = 42.f;
-    float zeni = 42.f;
-    unsigned order = 6;
+    float azi = 90.f;
+    float zeni = 0.f;
+    int order = 2;
     int degree;
+    /*
+    for (order = 0; order <= 3; order++)
+    {
+        for(degree = -order; degree <= order; degree++)
+        {
+            std::cout << "Order: " << order << " Degree: " << degree << " Norme: " << norme(order, degree) << '\n';
+        }
+    }
+    */
     std::vector<float> spheric = SH(order, azi, zeni);
+    int m_order = 0;
+    int m_degree = 0;
     for (int i = 0; i < spheric.capacity(); i++)
     {
-        int order = 0;
-        while ((order + 1) * (order + 1) <= i) { order++; }
-        int degree = i - (order * order) - order;
-        std::cout << "ACN: " << i << " Order: " << order << " Degree: " << degree << " Normalization: " << norme(order, degree, 0) << '\n';
-        //std::cout << "Raw: " << spheric[i] << '\n';
+        m_order = (int)(floor(sqrt(i)));
+        m_degree = (int)(i - (m_order * m_order) - m_order);
+        std::cout << "ACN: " << i << " Order: " << m_order << " Degree: " << m_degree << " Normalization: " << danielNorm(m_order, m_degree) << '\n';
+        std::cout << "Raw: " << spheric[i] << '\n';
     }
     std::cout << std::endl;
+    /**
     std::vector<float> bformat = BFormSH(spheric);
     for (int i = 0; i < bformat.capacity(); i++)
     {
@@ -119,5 +137,6 @@ int main()
         int degree = i - (order * order) - order;
         std::cout << "ACN: " << i << " B-Format: " << bformat[i] << '\n';
     }
+    */
     return 0;
 }
