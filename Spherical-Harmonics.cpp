@@ -25,38 +25,11 @@ constexpr int factorial(int n)
     return n <= 1 ? 1 : (n * factorial(n - 1));
 }
 
-float norme(unsigned order, int degree)
-{
-    float lf = (2.f * (int)order) + 1;
-    float t = factorial((int)order - abs(degree));
-    float b = factorial((int)order + abs(degree));
-    float res = (lf / fourpi) * (t / b);
-    //std::cout << '\n' << "\tLeft fraction: " << lf << " Top factorial: " << t << " Bottom factorial: " << b << " Result: " << (sqrtf(res)) << '\n';
-    return (sqrtf(res));
-}
-
 float danielNorm(unsigned order, int degree)
 {
     int d = (degree == 0) ? 1 : 0;  // Kronecker delta
     float ratio = static_cast<float>(factorial(order - abs(degree))) / factorial(order + abs(degree));
-    return sqrtf(((2.f - d)) * ratio);
-}
-
-float norme(int order, int degree, bool n3d)
-{
-    int d = (degree == 0) ? 1 : 0;  // Kronecker delta
-    float ratio = static_cast<float>(factorial(order - abs(degree))) / factorial(order + abs(degree));
-    return n3d ? sqrtf(2 * order + 1) * sqrtf((2.f - d) / (4.f * pi) * ratio) : sqrtf((2.f - d) / (4.f * pi) * ratio); // n3d = TRUE? then N3D (equal weighting),,,, n3d = FALSE? then SN3D
-}
-
-float inversenorme(unsigned order, int degree)
-{
-    float lf = (2.f * (int)order) + 1;
-    float t = factorial((int)order - abs(degree));
-    float b = factorial((int)order + abs(degree));
-    float res = (lf / fourpi) * (t / b);
-    //std::cout << "Order: " << order << " Degree: " << degree << " Inverse Norm: " << (sqrtf(res)) << std::endl;
-    return (1.f / (sqrtf(res)));
+    return sqrtf((2.f - d) * ratio);
 }
 
 std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_)
@@ -78,45 +51,15 @@ std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_
             result[pow(order, 2) + order + i] = (n * p) * r; // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
         }
     }
-
     return result;
 }
-
-std::vector<float> BFormSH(std::vector<float> SH)
-{
-    std::vector<float> result = std::vector<float>(SH.capacity(), 0);
-    unsigned order = 0;
-    int degree;
-    for (int ACN = 0; ACN < SH.capacity(); ACN++)
-    {
-        int order = 0;
-        while ((order + 1) * (order + 1) <= ACN) 
-        {
-            order++;
-        }
-        int degree = ACN - (order * order) - order;
-        //std::cout << "Order: " << order << " Degree: " << degree << " Encode factor: " << inversenorme(order, degree) << '\n';
-        result[ACN] = SH[ACN];
-    }
-    return result;
-}
-
 
 int main() 
 {
     float azi = 0.f;
     float zeni = 0.f;
-    int order = 4;
+    int order = 12;
     int degree;
-    /*
-    for (order = 0; order <= 3; order++)
-    {
-        for(degree = -order; degree <= order; degree++)
-        {
-            std::cout << "Order: " << order << " Degree: " << degree << " Norme: " << norme(order, degree) << '\n';
-        }
-    }
-    */
     std::vector<float> spheric = SH(order, azi, zeni);
     int m_order = 0;
     int m_degree = 0;
@@ -128,15 +71,5 @@ int main()
         // std::cout << "Raw: " << spheric[i] << '\n';
     }
     std::cout << std::endl;
-    /**
-    std::vector<float> bformat = BFormSH(spheric);
-    for (int i = 0; i < bformat.capacity(); i++)
-    {
-        int order = 0;
-        while ((order + 1) * (order + 1) <= i) { order++; }
-        int degree = i - (order * order) - order;
-        std::cout << "ACN: " << i << " B-Format: " << bformat[i] << '\n';
-    }
-    */
     return 0;
 }
