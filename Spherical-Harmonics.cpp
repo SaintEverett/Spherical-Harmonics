@@ -70,10 +70,10 @@ std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_
         for (int i = -order; i <= order; i++)
         {
             float n = danielNorm(order, i);
-            float p = (std::assoc_legendref(order, abs(i), sinf(zenith)));
+            float p = (std::assoc_legendref(order, abs(i), cosf(zenith - pi/2)));
             float r = 0.f;
-            if (i < 0) r = sinf(abs(i) * (azimuth));
-            else if (i >= 0) r = cosf(i * (azimuth));
+            if (i < 0) r = sinf(abs(i) * (azimuth - pi/2));
+            else if (i >= 0) r = cosf(i * (azimuth - pi/2));
             //std::cout << "Order: " << order << " Degree: " << i << " Complex component: " << r << " Legendre: " << p << " Normalization term: " << n << " ACN: " << (pow(order, 2) + order + i) << '\n';
             result[pow(order, 2) + order + i] = (n * p) * r; // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
         }
