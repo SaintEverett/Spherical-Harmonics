@@ -39,7 +39,7 @@ float danielNorm(unsigned order, int degree)
 {
     int d = (degree == 0) ? 1 : 0;  // Kronecker delta
     float ratio = static_cast<float>(factorial(order - abs(degree))) / factorial(order + abs(degree));
-    return sqrtf((2.f - d) * ratio);
+    return sqrtf(((2.f - d)) * ratio);
 }
 
 float norme(int order, int degree, bool n3d)
@@ -70,12 +70,12 @@ std::vector<float> SH(unsigned order_, const float azimuth_, const float zenith_
         for (int i = -order; i <= order; i++)
         {
             float n = danielNorm(order, i);
-            float p = (std::assoc_legendref(abs(i), order, sinf(zenith)));
+            float p = (std::assoc_legendref(order, abs(i), sinf(zenith)));
             float r = 0.f;
-            if (i < 0) r = sinf(abs(i) * (azimuth)); 
-            else if (i >= 0) r = cosf(i * (azimuth)); 
-            // std::cout << "Order: " << order << " Degree: " << i << " Complex component: " << r << " Legendre: " << p << " Normalization term: " << n << " ACN: " << (pow(order, 2) + order + i) << '\n';
-            result[pow(order, 2) + order + i] = sqrtf((2 * order) + 1) * (n * p) * r; // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
+            if (i < 0) r = sinf(abs(i) * (azimuth));
+            else if (i >= 0) r = cosf(i * (azimuth));
+            //std::cout << "Order: " << order << " Degree: " << i << " Complex component: " << r << " Legendre: " << p << " Normalization term: " << n << " ACN: " << (pow(order, 2) + order + i) << '\n';
+            result[pow(order, 2) + order + i] = (n * p) * r; // place inside vector so it is ordered as Y^0_0, Y^1_-1, Y^1_0, Y^1_1
         }
     }
 
@@ -104,9 +104,9 @@ std::vector<float> BFormSH(std::vector<float> SH)
 
 int main() 
 {
-    float azi = 90.f;
+    float azi = 0.f;
     float zeni = 0.f;
-    int order = 2;
+    int order = 4;
     int degree;
     /*
     for (order = 0; order <= 3; order++)
@@ -124,8 +124,8 @@ int main()
     {
         m_order = (int)(floor(sqrt(i)));
         m_degree = (int)(i - (m_order * m_order) - m_order);
-        std::cout << "ACN: " << i << " Order: " << m_order << " Degree: " << m_degree << " Normalization: " << danielNorm(m_order, m_degree) << '\n';
-        std::cout << "Raw: " << spheric[i] << '\n';
+        std::cout << "ACN: " << i << " Order: " << m_order << " Degree: " << m_degree << " Value: " << spheric[i] << '\n';
+        // std::cout << "Raw: " << spheric[i] << '\n';
     }
     std::cout << std::endl;
     /**
