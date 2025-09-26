@@ -1,11 +1,6 @@
 ﻿  Spherical-Harmonics.cpp
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(11,74): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(15,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(20,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(39,55): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(46,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(48,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(49,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(51,42): warning C4244: 'argument': conversion from 'double' to 'const unsigned __int64', possible loss of data
-C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(62,9): warning C4101: 'degree': unreferenced local variable
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(12,36): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(13,37): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(46,30): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\carpe\Documents\git\Spherical-Harmonics\Spherical-Harmonics.cpp(62,37): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   Spherical-Harmonics.vcxproj -> C:\Users\carpe\Documents\git\Spherical-Harmonics\x64\Debug\Spherical-Harmonics.exe
