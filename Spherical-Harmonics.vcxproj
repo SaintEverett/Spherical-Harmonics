@@ -127,7 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Spherical-Harmonics.cpp" />
+    <ClCompile Include="[SHCT] Spherical-Harmonics.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SHCT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

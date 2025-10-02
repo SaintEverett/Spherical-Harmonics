@@ -14,7 +14,6 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <unordered_map>
 #include <array>
 
 #define pi 3.14159265358979323846264
@@ -94,10 +93,10 @@ void print(std::vector<float> shs) // print function
     {
         m_order = (int)(floor(sqrt(i)));
         m_degree = (int)(i - (m_order * m_order) - m_order);
-        std::cout << "ACN: " << i << " Order: " << m_order << " Degree: " << m_degree << " Value: " << shs[i] << '\n';
+        // std::cout << "ACN: " << i << " Order: " << m_order << " Degree: " << m_degree << " Value: " << shs[i] << '\n';
     }
 }
-
+/*
 int main()
 {
     float azi = 0.f;                                      // test instance azimuth
@@ -107,3 +106,4 @@ int main()
     print(spheric);
     return 0;
 }
+*/

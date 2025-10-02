@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|solutionrelative:Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\SHCT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|solutionrelative:SHCT.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\[SHCT] Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A1339D37-8D3E-4C57-8AF5-0EAACB0E78D6}|Spherical-Harmonics.vcxproj|solutionrelative:[SHCT] Spherical-Harmonics.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Spherical-Harmonics.cpp",
-              "DocumentMoniker": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
-              "RelativeDocumentMoniker": "Spherical-Harmonics.cpp",
-              "ToolTip": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\Spherical-Harmonics.cpp",
-              "RelativeToolTip": "Spherical-Harmonics.cpp",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFYAAAARAAAAAAAAAA==",
+              "Title": "SHCT.h",
+              "DocumentMoniker": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\SHCT.h",
+              "RelativeDocumentMoniker": "SHCT.h",
+              "ToolTip": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\SHCT.h",
+              "RelativeToolTip": "SHCT.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-01T22:47:36.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "[SHCT] Spherical-Harmonics.cpp",
+              "DocumentMoniker": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\[SHCT] Spherical-Harmonics.cpp",
+              "RelativeDocumentMoniker": "[SHCT] Spherical-Harmonics.cpp",
+              "ToolTip": "C:\\Users\\carpe\\Documents\\git\\Spherical-Harmonics\\[SHCT] Spherical-Harmonics.cpp",
+              "RelativeToolTip": "[SHCT] Spherical-Harmonics.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAADwv1YAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-17T23:14:21.196Z",
+              "WhenOpened": "2025-10-01T22:27:15.609Z",
               "EditorCaption": ""
             }
           ]
